@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style></style>
+  </head>
+  <body>
+    <h1>dex json</h1>
+    <script>
+      function getPokeData(id) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            const pokeData = {
+              weight: data.weight,
+              height: data.height,
+              type: [],
+              ability: [],
+            };
+            data.stats.forEach((n) => {
+              pokeData[n.stat.name] = n.base_stat;
+            });
+            data.types.forEach((n) => {
+              pokeData.type.push(n.type.name);
+            });
+            data.abilities.forEach((n) => {
+              pokeData.ability.push(n.ability.name);
+            });
+            console.table(pokeData);
+            console.log(JSON.stringify(pokeData));
+          })
+          .catch((err) => {});
+      }
+      getPokeData(6);
+    </script>
+  </body>
+</html>
+/* fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=151") => solo
+neceistamos data.result => nombre y numero */
