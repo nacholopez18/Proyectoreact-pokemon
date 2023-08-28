@@ -6,6 +6,47 @@
   <body>
     <h1>dex json</h1>
     <script>
+      async function generateJson() {
+        const pokemonData = [];
+        for (let i = 1; i <= 151; i++) {
+          const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+          if (res.ok) {
+            const data = await res.json();
+            const pokeData = {
+              name: data.name,
+              number: i,
+              weight: data.weight,
+              height: data.height,
+              type: [],
+              ability: [],
+            };
+            data.stats.forEach((n) => {
+              pokeData[n.stat.name] = n.base_stat;
+            });
+            data.types.forEach((n) => {
+              pokeData.type.push(n.type.name);
+            });
+            data.abilities.forEach((n) => {
+              pokeData.ability.push(n.ability.name);
+            });
+            const textRes = await fetch(
+              `https://pokeapi.co/api/v2/pokemon-species/${i}`
+            );
+            if (textRes.ok) {
+              const textData = await textRes.json();
+              const textEntry = textData.flavor_text_entries.find((info) => {
+                return info.language.name == "es";
+              });
+              pokeData.txt = textEntry;
+            }
+            pokemonData.push(pokeData);
+          }
+        }
+        console.log(JSON.stringify(pokemonData));
+      }
+      generateJson();
+
+      /*
       function getPokeData(id) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
           .then((res) => {
@@ -33,6 +74,7 @@
           .catch((err) => {});
       }
       getPokeData(6);
+    */
     </script>
   </body>
 </html>
