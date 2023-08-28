@@ -37,7 +37,7 @@
               const textEntry = textData.flavor_text_entries.find((info) => {
                 return info.language.name == "es";
               });
-              pokeData.txt = textEntry;
+              pokeData.txt = textEntry.flavor_text;
             }
             pokemonData.push(pokeData);
           }
