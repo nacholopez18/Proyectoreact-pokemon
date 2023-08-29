@@ -1,21 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Browse.css";
 import Pokemon from "./Pokemon";
 import Navbar from "./Navbar";
 
 function Browse() {
-  fetch("http://localhost:3000/pokemon")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => console.log(error));
+  const [pokeData, setPokeData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/pokemon")
+      .then((res) => res.json())
+      .then((data) => {
+        setPokeData(data);
+        console.log(data[0]);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const [numericSort, setNumericSort] = useState(true);
+  const [searchFilter, setSearchFilter] = useState("");
+
+  const results = pokeData.filter((n) => n.name.includes(searchFilter));
+  if (!numericSort) {
+    results.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+  }
 
   return (
     <>
-      <Navbar />
+      <Navbar filter={setSearchFilter} sort={setNumericSort} />
       <main>
-        <Pokemon name="Juan" img="tag.png" number="25" />
+        {results.map((poke) => {
+          return (
+            <Pokemon
+              key={poke.number}
+              name={poke.name}
+              img={poke.img}
+              number={poke.number}
+            />
+          );
+        })}
       </main>
     </>
   );

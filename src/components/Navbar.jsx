@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar(props) {
   return (
     <nav>
       <h1>
@@ -10,7 +10,13 @@ function Navbar() {
       </h1>
       <div className="searchBar">
         <img className="searchImg" src="./search.png" alt="" />
-        <input type="text" placeholder="Search" />
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => {
+            props.filter(e.target.value);
+          }}
+        />
         <button>
           <img src="./tag.png" />
         </button>
