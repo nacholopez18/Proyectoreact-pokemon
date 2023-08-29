@@ -1,0 +1,20 @@
+nav {
+  color: white;
+}
+.searchBar {
+  position: relative;
+}
+.searchBar .searchImg {
+  position: absolute;
+  width: 20px;
+}
+.searchBar input {
+  padding-left: 20px;
+}
+.searchBar button img {
+  width: 15px;
+  height: 15px;
+}
+.searchBar button {
+  border-radius: 50%;
+}
