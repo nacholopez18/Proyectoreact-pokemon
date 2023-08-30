@@ -18,7 +18,11 @@ function Browse() {
   const [numericSort, setNumericSort] = useState(true);
   const [searchFilter, setSearchFilter] = useState("");
 
-  const results = pokeData.filter((n) => n.name.includes(searchFilter));
+  const results = pokeData.filter(
+    (n) =>
+      n.name.includes(searchFilter) ||
+      n.number.toString().includes(searchFilter)
+  );
   if (!numericSort) {
     results.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
   }
