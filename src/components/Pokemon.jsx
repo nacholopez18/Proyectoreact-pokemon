@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Pokemon(props) {
   let number = props.number + ``;
@@ -8,11 +9,13 @@ function Pokemon(props) {
   console.log(number);
 
   return (
-    <div>
-      <p>#{number}</p>
-      <img src={props.img} />
-      <p>{props.name}</p>
-    </div>
+    <Link to={`/pokemon/` + props.number}>
+      <div>
+        <p>#{number}</p>
+        <img src={props.img} />
+        <p>{props.name}</p>
+      </div>
+    </Link>
   );
 }
 

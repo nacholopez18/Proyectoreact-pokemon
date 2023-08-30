@@ -29,7 +29,11 @@ function Browse() {
 
   return (
     <>
-      <Navbar filter={setSearchFilter} sort={setNumericSort} />
+      <Navbar
+        filterText={setSearchFilter}
+        sortBy={setNumericSort}
+        searchState={numericSort}
+      />
       <main>
         {results.map((poke) => {
           return (

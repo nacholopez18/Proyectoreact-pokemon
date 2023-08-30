@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
+import Modal from "./Modal";
 
 function Navbar(props) {
+  const [modalOn, setModalOn] = useState(false);
+  const imgUrl = props.searchState ? "./tag.png" : "./text_format.png";
   return (
     <nav>
       <h1>
@@ -14,13 +17,18 @@ function Navbar(props) {
           type="text"
           placeholder="Search"
           onChange={(e) => {
-            props.filter(e.target.value);
+            props.filterText(e.target.value);
           }}
         />
-        <button>
-          <img src="./tag.png" />
+        <button
+          onClick={() => {
+            setModalOn(!modalOn);
+          }}
+        >
+          <img src={imgUrl} />
         </button>
       </div>
+      {modalOn && <Modal sortBy={props.sortBy} />}
     </nav>
   );
 }

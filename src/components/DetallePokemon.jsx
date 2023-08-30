@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 function DetallePokemon() {
   const [myPokemon, setMyPokemon] = useState({});
+  const location = useLocation();
 
   const pokeId = useParams();
   useEffect(() => {
@@ -12,9 +13,15 @@ function DetallePokemon() {
         setMyPokemon(data[0]);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [pokeId]);
 
   console.log(myPokemon);
+
+  let number = myPokemon.number + ``;
+  while (number.length < 3) {
+    number = "0" + number;
+  }
+
   return (
     <section>
       <img src="../pokeball.png" />
@@ -22,12 +29,20 @@ function DetallePokemon() {
         <div className={myPokemon.type[0]}>
           <nav>
             <button>
-              <img src="../arrow_back.png" />
+              <Link to={`..`}>
+                <img src="../arrow_back.png" />
+              </Link>
             </button>
             {myPokemon.name}
-            {myPokemon.number}
+            {"#" + number}
           </nav>
+          {parseInt(pokeId.id) > 1 && (
+            <Link to={"../pokemon/" + (parseInt(pokeId.id) - 1)}> {"<"}</Link>
+          )}
           <img src={myPokemon.img} />
+          {parseInt(pokeId.id) < 151 && (
+            <Link to={"../pokemon/" + (parseInt(pokeId.id) + 1)}> {">"}</Link>
+          )}
           <div className="card">
             <div>{myPokemon.type}</div>
             <p>About</p>
