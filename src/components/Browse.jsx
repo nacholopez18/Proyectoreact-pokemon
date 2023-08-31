@@ -35,16 +35,22 @@ function Browse() {
         searchState={numericSort}
       />
       <main>
-        {results.map((poke) => {
-          return (
-            <Pokemon
-              key={poke.number}
-              name={poke.name}
-              img={poke.img}
-              number={poke.number}
-            />
-          );
-        })}
+        <div className="browseGrid">
+          {results.map((poke) => {
+            return (
+              <>
+                <div className="browseGridBox">
+                  <Pokemon
+                    key={poke.number}
+                    name={poke.name}
+                    img={poke.img}
+                    number={poke.number}
+                  />
+                </div>
+              </>
+            );
+          })}
+        </div>
       </main>
     </>
   );
