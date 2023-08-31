@@ -1,0 +1,103 @@
+.poke-info {
+  padding: 0.3rem;
+  height: 100vh;
+}
+.poke-info.bug {
+  background-color: #a7b723;
+}
+.poke-info.dark {
+  background-color: #75574c;
+}
+.poke-info.dragon {
+  background-color: #7037ff;
+}
+.poke-info.electric {
+  background-color: #f9cf30;
+}
+.poke-info.fairy {
+  background-color: #e69eac;
+}
+.poke-info.fighting {
+  background-color: #c12239;
+}
+.poke-info.fire {
+  background-color: #f57d31;
+}
+.poke-info.flying {
+  background-color: #a891ec;
+}
+.poke-info.ghost {
+  background-color: #70559b;
+}
+.poke-info.normal {
+  background-color: #aaa67f;
+}
+.poke-info.grass {
+  background-color: #74cb48;
+}
+.poke-info.ground {
+  background-color: #dec16b;
+}
+.poke-info.ice {
+  background-color: #9ad6df;
+}
+.poke-info.poison {
+  background-color: #a43e9e;
+}
+.poke-info.psychic {
+  background-color: #fb5584;
+}
+.poke-info.rock {
+  background-color: #b69e31;
+}
+.poke-info.steel {
+  background-color: #b7b9d0;
+}
+.poke-info.water {
+  background-color: #6493eb;
+}
+
+.poke-info nav {
+  margin: 1rem;
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-between;
+}
+.poke-info .info-nav {
+  display: flex;
+}
+.poke-info nav img {
+  height: 2rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.poke-info .poke-portrait {
+  height: 10rem;
+  position: relative;
+}
+.poke-info .bg-ball {
+  opacity: 0.4;
+  position: absolute;
+  height: 10rem;
+  right: 0;
+}
+.poke-portrait a {
+  color: white;
+  position: absolute;
+  top: 50%;
+  text-decoration: none;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.poke-portrait a.btn-prev {
+  left: 0;
+}
+.poke-portrait a.btn-next {
+  right: 0;
+}
+.poke-info .poke-img {
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
