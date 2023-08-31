@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
+import "./DetallePokemon.css";
 
 function DetallePokemon() {
   const [myPokemon, setMyPokemon] = useState({});
@@ -23,26 +24,43 @@ function DetallePokemon() {
   }
 
   return (
-    <section>
-      <img src="../pokeball.png" />
+    <>
       {myPokemon.type && (
-        <div className={myPokemon.type[0]}>
+        <section className={"poke-info " + myPokemon.type[0]}>
           <nav>
-            <button>
+            <div className="info-nav">
               <Link to={`..`}>
                 <img src="../arrow_back.png" />
               </Link>
-            </button>
-            {myPokemon.name}
-            {"#" + number}
+              <h3>{myPokemon.name}</h3>
+            </div>
+            <p>{"#" + number}</p>
           </nav>
-          {parseInt(pokeId.id) > 1 && (
-            <Link to={"../pokemon/" + (parseInt(pokeId.id) - 1)}> {"<"}</Link>
-          )}
-          <img src={myPokemon.img} />
-          {parseInt(pokeId.id) < 151 && (
-            <Link to={"../pokemon/" + (parseInt(pokeId.id) + 1)}> {">"}</Link>
-          )}
+          <div className="poke-portrait">
+            <img className="bg-ball" src="../pokeball.png" />
+            <img className="poke-img" src={myPokemon.img} />
+
+            {parseInt(pokeId.id) > 1 && (
+              <Link
+                className="btn-prev"
+                to={"../pokemon/" + (parseInt(pokeId.id) - 1)}
+              >
+                {" "}
+                {"<"}
+              </Link>
+            )}
+
+            {parseInt(pokeId.id) < 151 && (
+              <Link
+                className="btn-next"
+                to={"../pokemon/" + (parseInt(pokeId.id) + 1)}
+              >
+                {" "}
+                {">"}
+              </Link>
+            )}
+          </div>
+
           <div className="card">
             <div>{myPokemon.type}</div>
             <p>About</p>
@@ -89,9 +107,9 @@ function DetallePokemon() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       )}
-    </section>
+    </>
   );
 }
 
