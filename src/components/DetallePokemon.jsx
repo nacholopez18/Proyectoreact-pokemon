@@ -6,6 +6,9 @@ function DetallePokemon() {
   const [myPokemon, setMyPokemon] = useState({});
   const location = useLocation();
 
+  const capitalise = (str) => {
+    return str[0].toUpperCase() + str.slice(1);
+  };
   const pokeId = useParams();
   useEffect(() => {
     fetch("http://localhost:3000/pokemon?number=" + pokeId.id)
@@ -32,7 +35,7 @@ function DetallePokemon() {
               <Link to={`..`}>
                 <img src="../arrow_back.png" />
               </Link>
-              <h3>{myPokemon.name}</h3>
+              <h3>{capitalise(myPokemon.name)}</h3>
             </div>
             <p>{"#" + number}</p>
           </nav>
