@@ -8,12 +8,16 @@ function Pokemon(props) {
   }
   console.log(number);
 
+  const capitalise = (str) => {
+    return str[0].toUpperCase() + str.slice(1);
+  };
+
   return (
     <Link to={`/pokemon/` + props.number}>
       <div>
         <p>#{number}</p>
         <img src={props.img} />
-        <p>{props.name}</p>
+        <p>{capitalise(props.name)}</p>
       </div>
     </Link>
   );

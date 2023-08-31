@@ -1,3 +1,26 @@
 main {
   background-color: white;
+  margin: 15px 5px;
+  border-radius: 10px;
+}
+.browseGrid .browseGridBox img {
+  width: 60px;
+  height: 60px;
+}
+.browseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px 15px;
+}
+.browseGridBox {
+  background-color: #efefef;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px, 0px 60px white inset;
+  border-radius: 10px;
+  box-shadow: 2px;
+  text-align: center;
+}
+.browseGrid .browseGridBox a {
+  color: black;
+  text-decoration: none;
 }
