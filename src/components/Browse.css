@@ -8,8 +8,9 @@ main {
   height: 60px;
 }
 .browseGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   gap: 10px;
   padding: 20px 15px;
 }
@@ -19,6 +20,9 @@ main {
   border-radius: 10px;
   box-shadow: 2px;
   text-align: center;
+  aspect-ratio: 1;
+  min-width: 110px;
+  width: 10%;
 }
 .browseGrid .browseGridBox a {
   color: black;

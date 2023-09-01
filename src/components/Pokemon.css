@@ -1,0 +1,9 @@
+.pokemonBoxHashtag {
+  text-align: end;
+  font-size: 12px;
+  opacity: 60%;
+  padding: 5px 5px 0 0;
+}
+.pokemonBoxName {
+  padding-bottom: 5px;
+}
