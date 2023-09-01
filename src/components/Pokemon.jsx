@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Pokemon.css";
 
 function Pokemon(props) {
   let number = props.number + ``;
   while (number.length < 3) {
     number = "0" + number;
   }
-  console.log(number);
   console.log(number);
 
   const capitalise = (str) => {
@@ -15,10 +15,10 @@ function Pokemon(props) {
 
   return (
     <Link to={`/pokemon/` + props.number}>
-      <div>
-        <p>#{number}</p>
+      <div className="pokemonBox">
+        <p className="pokemonBoxHashtag">#{number}</p>
         <img src={props.img} />
-        <p>{capitalise(props.name)}</p>
+        <p className="pokemonBoxName">{capitalise(props.name)}</p>
       </div>
     </Link>
   );
