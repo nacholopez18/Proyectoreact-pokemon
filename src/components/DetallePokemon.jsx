@@ -74,10 +74,9 @@ function DetallePokemon() {
             </div>
             <p>{myPokemon.txt}</p>
             <div>
-              <p>Base Stats</p>
-              <div>
-                {" "}
-                <ul>
+              <p className={myPokemon.type[0]}>Base Stats</p>
+              <div className="poke-stats">
+                <ul className={myPokemon.type[0]}>
                   <li>HP</li>
                   <li>ATK</li>
                   <li>DEF</li>
@@ -85,8 +84,6 @@ function DetallePokemon() {
                   <li>SDEF</li>
                   <li>SPD</li>
                 </ul>
-              </div>
-              <div>
                 <ul>
                   <li>{myPokemon.hp}</li>
                   <li>{myPokemon.attack}</li>
@@ -95,17 +92,38 @@ function DetallePokemon() {
                   <li>{myPokemon[`special-defense`]}</li>
                   <li>{myPokemon.speed}</li>
                 </ul>
-              </div>
-              <div>
-                <ul className="statusBar">
-                  <li style={{ width: myPokemon.hp + `%` }}></li>
-                  <li style={{ width: myPokemon.attack + `%` }}></li>
-                  <li style={{ width: myPokemon.defense + `%` }}></li>
-                  <li style={{ width: myPokemon[`special-attack`] + `%` }}></li>
-                  <li
-                    style={{ width: myPokemon[`special-defense`] + `%` }}
-                  ></li>
-                  <li style={{ width: myPokemon.speed + `%` }}></li>
+                <ul className="status-bars">
+                  <li>
+                    <div style={{ width: myPokemon[`hp`] * 0.8 + `%` }}></div>
+                  </li>
+                  <li>
+                    <div
+                      style={{ width: myPokemon[`attack`] * 0.8 + `%` }}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      style={{ width: myPokemon[`defense`] * 0.8 + `%` }}
+                    ></div>
+                  </li>
+
+                  <li>
+                    <div
+                      style={{ width: myPokemon[`special-attack`] * 0.8 + `%` }}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      style={{
+                        width: myPokemon[`special-defense`] * 0.8 + `%`,
+                      }}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      style={{ width: myPokemon[`speed`] * 0.8 + `%` }}
+                    ></div>
+                  </li>
                 </ul>
               </div>
             </div>
