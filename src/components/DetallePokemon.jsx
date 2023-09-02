@@ -29,7 +29,7 @@ function DetallePokemon() {
   return (
     <>
       {myPokemon.type && (
-        <section className={"poke-info " + myPokemon.type[0]}>
+        <section className={"poke-info " + myPokemon.type[0] + "-bg"}>
           <nav>
             <div className="info-nav">
               <Link to={`..`}>
@@ -37,10 +37,11 @@ function DetallePokemon() {
               </Link>
               <h3>{capitalise(myPokemon.name)}</h3>
             </div>
+
             <p>{"#" + number}</p>
           </nav>
+          <img className="bg-ball" src="../pokeball.png" />
           <div className="poke-portrait">
-            <img className="bg-ball" src="../pokeball.png" />
             <img className="poke-img" src={myPokemon.img} />
 
             {parseInt(pokeId.id) > 1 && (
@@ -48,7 +49,6 @@ function DetallePokemon() {
                 className="btn-prev"
                 to={"../pokemon/" + (parseInt(pokeId.id) - 1)}
               >
-                {" "}
                 {"<"}
               </Link>
             )}
@@ -58,25 +58,49 @@ function DetallePokemon() {
                 className="btn-next"
                 to={"../pokemon/" + (parseInt(pokeId.id) + 1)}
               >
-                {" "}
                 {">"}
               </Link>
             )}
           </div>
 
           <div className="card">
-            <div>{myPokemon.type}</div>
-            <p>About</p>
-            <div>
-              {myPokemon.weight}
-              {myPokemon.height}
-              {myPokemon.abilities}
+            <div className="white-txt type-logos">
+              {myPokemon.type.map((pktype) => {
+                return <p className={pktype + "-bg"}>{capitalise(pktype)}</p>;
+              })}
             </div>
+            <h3 className={myPokemon.type[0] + "-txt"}>About</h3>
+            <ul className="extra-info">
+              <li className="spacer">
+                <div>
+                  <p>
+                    <img src="/weight.png" />
+                    {myPokemon.weight / 10 + " Kg"}
+                  </p>
+                </div>
+                <span>Weight</span>
+              </li>
+              <li className="spacer">
+                <div>
+                  <p>
+                    <img src="/straighten.png" />
+                    {myPokemon.height / 10 + " m"}
+                  </p>
+                </div>
+                <span>Height</span>
+              </li>
+              <li>
+                {myPokemon.ability.map((pkAbility) => {
+                  return <p>{capitalise(pkAbility)}</p>;
+                })}
+                <span>Abilities</span>
+              </li>
+            </ul>
             <p>{myPokemon.txt}</p>
             <div>
-              <p className={myPokemon.type[0]}>Base Stats</p>
+              <h3 className={myPokemon.type[0] + "-txt"}>Base Stats</h3>
               <div className="poke-stats">
-                <ul className={myPokemon.type[0]}>
+                <ul className={myPokemon.type[0] + "-txt spacer"}>
                   <li>HP</li>
                   <li>ATK</li>
                   <li>DEF</li>
@@ -94,34 +118,73 @@ function DetallePokemon() {
                 </ul>
                 <ul className="status-bars">
                   <li>
-                    <div style={{ width: myPokemon[`hp`] * 0.8 + `%` }}></div>
-                  </li>
-                  <li>
                     <div
-                      style={{ width: myPokemon[`attack`] * 0.8 + `%` }}
+                      className={"bg-status-bar " + myPokemon.type[0] + "-bg"}
                     ></div>
-                  </li>
-                  <li>
-                    <div
-                      style={{ width: myPokemon[`defense`] * 0.8 + `%` }}
-                    ></div>
-                  </li>
-
-                  <li>
-                    <div
-                      style={{ width: myPokemon[`special-attack`] * 0.8 + `%` }}
-                    ></div>
-                  </li>
-                  <li>
                     <div
                       style={{
-                        width: myPokemon[`special-defense`] * 0.8 + `%`,
+                        width: Math.min(myPokemon[`hp`] * 0.7, 100) + `%`,
                       }}
+                      className={myPokemon.type[0] + "-bg"}
                     ></div>
                   </li>
                   <li>
                     <div
-                      style={{ width: myPokemon[`speed`] * 0.8 + `%` }}
+                      className={"bg-status-bar " + myPokemon.type[0] + "-bg"}
+                    ></div>
+                    <div
+                      style={{
+                        width: Math.min(myPokemon[`attack`] * 0.7, 100) + `%`,
+                      }}
+                      className={myPokemon.type[0] + "-bg"}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      className={"bg-status-bar " + myPokemon.type[0] + "-bg"}
+                    ></div>
+                    <div
+                      style={{
+                        width: Math.min(myPokemon[`defense`] * 0.7, 100) + `%`,
+                      }}
+                      className={myPokemon.type[0] + "-bg"}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      className={"bg-status-bar " + myPokemon.type[0] + "-bg"}
+                    ></div>
+                    <div
+                      style={{
+                        width:
+                          Math.min(myPokemon[`special-attack`] * 0.7, 100) +
+                          `%`,
+                      }}
+                      className={myPokemon.type[0] + "-bg"}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      className={"bg-status-bar " + myPokemon.type[0] + "-bg"}
+                    ></div>
+                    <div
+                      style={{
+                        width:
+                          Math.min(myPokemon[`special-defense`] * 0.7, 100) +
+                          `%`,
+                      }}
+                      className={myPokemon.type[0] + "-bg"}
+                    ></div>
+                  </li>
+                  <li>
+                    <div
+                      className={"bg-status-bar " + myPokemon.type[0] + "-bg"}
+                    ></div>
+                    <div
+                      style={{
+                        width: Math.min(myPokemon[`speed`] * 0.7, 100) + `%`,
+                      }}
+                      className={myPokemon.type[0] + "-bg"}
                     ></div>
                   </li>
                 </ul>
