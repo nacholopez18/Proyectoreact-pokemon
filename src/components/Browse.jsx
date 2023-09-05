@@ -10,7 +10,7 @@ function Browse() {
       .then((res) => res.json())
       .then((data) => {
         setPokeData(data);
-        console.log(data[0]);
+        // console.log(data[0]);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -31,7 +31,8 @@ function Browse() {
     <>
       <Navbar
         filterText={setSearchFilter}
-        sortBy={setNumericSort}
+        setSortBy={setNumericSort}
+        sortBy={numericSort}
         searchState={numericSort}
       />
       <main>

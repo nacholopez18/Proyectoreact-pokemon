@@ -4,6 +4,7 @@ import Modal from "./Modal";
 
 function Navbar(props) {
   const [modalOn, setModalOn] = useState(false);
+  // const [memoryCheck, setMemoryCheck] = useState(true);
   const imgUrl = props.searchState ? "./tag.png" : "./text_format.png";
   return (
     <nav>
@@ -20,6 +21,7 @@ function Navbar(props) {
             props.filterText(e.target.value);
           }}
         />
+
         <button
           onClick={() => {
             setModalOn(!modalOn);
@@ -28,7 +30,16 @@ function Navbar(props) {
           <img src={imgUrl} />
         </button>
       </div>
-      {modalOn && <Modal sortBy={props.sortBy} />}
+
+      {modalOn && (
+        <Modal
+          // setMemoryCheck={setMemoryCheck}
+          // memoryCheck={memoryCheck}
+          onOff={[modalOn, setModalOn]}
+          setSortBy={props.setSortBy}
+          sortBy={props.sortBy}
+        />
+      )}
     </nav>
   );
 }

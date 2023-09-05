@@ -7,7 +7,7 @@ function Pokemon(props) {
   while (number.length < 3) {
     number = "0" + number;
   }
-  console.log(number);
+  // console.log(number);
 
   const capitalise = (str) => {
     return str[0].toUpperCase() + str.slice(1);
