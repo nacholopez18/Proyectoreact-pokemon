@@ -18,8 +18,8 @@ function Pokemon(props) {
       <div className="pokemonBox">
         {props.img ? (
           <>
-            <img src={props.img} />
             <p className="pokemonBoxHashtag">#{number}</p>
+            <img src={props.img} />
           </>
         ) : (
           <div className="emptyImage"> </div>

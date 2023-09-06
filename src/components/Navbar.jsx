@@ -30,7 +30,6 @@ function Navbar(props) {
           <img src={imgUrl} />
         </button>
       </div>
-
       {modalOn && (
         <Modal
           // setMemoryCheck={setMemoryCheck}
