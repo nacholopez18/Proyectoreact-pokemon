@@ -6,4 +6,21 @@
 }
 .pokemonBoxName {
   padding-bottom: 5px;
+  text-transform: capitalize;
+}
+.pokemonBox {
+  overflow: hidden;
+}
+@keyframes moving-gradient {
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.emptyImage {
+  background-color: grey;
+  opacity: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  animation: moving-gradient 1s infinite;
 }

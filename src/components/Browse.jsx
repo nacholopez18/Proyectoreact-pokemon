@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 
 function Browse() {
   const [pokeData, setPokeData] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch("http://localhost:3000/pokemon")
       .then((res) => res.json())
@@ -12,19 +13,38 @@ function Browse() {
         setPokeData(data);
         // console.log(data[0]);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const [numericSort, setNumericSort] = useState(true);
   const [searchFilter, setSearchFilter] = useState("");
 
-  const results = pokeData.filter(
-    (n) =>
-      n.name.includes(searchFilter) ||
-      n.number.toString().includes(searchFilter)
-  );
-  if (!numericSort) {
-    results.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+  let results = [];
+  if (loading) {
+    results = Array(50).fill({
+      number: "",
+      name: "",
+      img: "",
+    });
+  } else {
+    results = pokeData.filter(
+      (n) =>
+        n.name.includes(searchFilter) ||
+        n.number.toString().includes(searchFilter)
+    );
+    if (!numericSort) {
+      results.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+    }
+    if (!results.length) {
+      results.push({
+        number: "",
+        name: "Not found",
+        img: "../pokenotfound.png",
+      });
+    }
   }
 
   return (

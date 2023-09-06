@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation, Navigate } from "react-router-dom";
 import "./DetallePokemon.css";
 
 function DetallePokemon() {
@@ -19,8 +19,13 @@ function DetallePokemon() {
       .catch((error) => console.log(error));
   }, [pokeId]);
 
-  console.log(myPokemon);
-
+  if (!myPokemon) {
+    return (
+      <>
+        <Navigate to="/404" replace={true} />
+      </>
+    );
+  }
   let number = myPokemon.number + ``;
   while (number.length < 3) {
     number = "0" + number;

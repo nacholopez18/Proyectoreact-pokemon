@@ -14,11 +14,17 @@ function Pokemon(props) {
   };
 
   return (
-    <Link to={`/pokemon/` + props.number}>
+    <Link to={props.number > 0 ? `/pokemon/` + props.number : "#"}>
       <div className="pokemonBox">
-        <p className="pokemonBoxHashtag">#{number}</p>
-        <img src={props.img} />
-        <p className="pokemonBoxName">{capitalise(props.name)}</p>
+        {props.img ? (
+          <>
+            <img src={props.img} />
+            <p className="pokemonBoxHashtag">#{number}</p>
+          </>
+        ) : (
+          <div className="emptyImage"> </div>
+        )}
+        <p className="pokemonBoxName">{props.name}</p>
       </div>
     </Link>
   );

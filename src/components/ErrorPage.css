@@ -1,0 +1,18 @@
+.error-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-container img {
+  width: 85%;
+  max-width: 1000px;
+}
+.error-container a {
+  padding: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: azure;
+  background-color: #a0578c;
+}
