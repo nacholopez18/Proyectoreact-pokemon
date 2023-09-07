@@ -5,13 +5,13 @@ import Modal from "./Modal";
 function Navbar(props) {
   const [modalOn, setModalOn] = useState(false);
   // const [memoryCheck, setMemoryCheck] = useState(true);
-  const imgUrl = props.searchState ? "./tag.png" : "./text_format.png";
+  const imgUrl = props.searchState ? "./tag.svg" : "./text_format.png";
   return (
     <nav>
-      <h1>
+      <div className="titleWithImg">
         <img src="./pokeball.png" />
-        Pokédex
-      </h1>
+        <h1>Pokédex</h1>
+      </div>
       <div className="searchBar">
         <img className="searchImg" src="./search.png" alt="" />
         <input
