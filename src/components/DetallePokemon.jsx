@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useLocation, Navigate } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useLocation,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import "./DetallePokemon.css";
 
 function DetallePokemon() {
   const [myPokemon, setMyPokemon] = useState({});
   const location = useLocation();
 
+  const navigate = useNavigate();
   const capitalise = (str) => {
     return str[0].toUpperCase() + str.slice(1);
   };
@@ -31,10 +38,35 @@ function DetallePokemon() {
     number = "0" + number;
   }
 
+  let fingerX = 0;
+
   return (
     <>
       {myPokemon.type && (
-        <section className={"poke-info " + myPokemon.type[0] + "-bg"}>
+        <section
+          onTouchStart={(e) => {
+            fingerX = e.changedTouches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            let moveX = e.changedTouches[0].clientX - fingerX;
+            if (parseInt(pokeId.id) > 1 && moveX > 100) {
+              document
+                .querySelector(".poke-img")
+                .classList.remove("animationClass");
+              navigate("../pokemon/" + (parseInt(pokeId.id) - 1), {
+                replace: true,
+              });
+            } else if (parseInt(pokeId.id) < 151 && moveX < -100) {
+              document
+                .querySelector(".poke-img")
+                .classList.remove("animationClass");
+              navigate("../pokemon/" + (parseInt(pokeId.id) + 1), {
+                replace: true,
+              });
+            }
+          }}
+          className={"poke-info " + myPokemon.type[0] + "-bg"}
+        >
           <nav>
             <div className="info-nav">
               <Link to={`..`}>
@@ -45,14 +77,28 @@ function DetallePokemon() {
 
             <p>{"#" + number}</p>
           </nav>
-          <img className="bg-ball" src="../pokeball.png" />
           <div className="poke-portrait">
-            <img className="poke-img" src={myPokemon.img} />
+            <img className="bg-ball" src="../pokeball-1.svg" />
+            <img
+              className="poke-img "
+              src={myPokemon.img}
+              onLoad={(e) => {
+                e.target.classList.toggle("animationClass");
+                // setTimeout(() => {
+                //   e.target.classList.toggle("animationClass");
+                // }, 250);
+              }}
+            />
 
             {parseInt(pokeId.id) > 1 && (
               <Link
                 className="btn-prev"
                 to={"../pokemon/" + (parseInt(pokeId.id) - 1)}
+                onClick={() => {
+                  document
+                    .querySelector(".poke-img")
+                    .classList.remove("animationClass");
+                }}
               >
                 {"<"}
               </Link>
@@ -62,6 +108,11 @@ function DetallePokemon() {
               <Link
                 className="btn-next"
                 to={"../pokemon/" + (parseInt(pokeId.id) + 1)}
+                onClick={() => {
+                  document
+                    .querySelector(".poke-img")
+                    .classList.remove("animationClass");
+                }}
               >
                 {">"}
               </Link>

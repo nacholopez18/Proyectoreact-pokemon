@@ -32,8 +32,6 @@ function Navbar(props) {
       </div>
       {modalOn && (
         <Modal
-          // setMemoryCheck={setMemoryCheck}
-          // memoryCheck={memoryCheck}
           onOff={[modalOn, setModalOn]}
           setSortBy={props.setSortBy}
           sortBy={props.sortBy}

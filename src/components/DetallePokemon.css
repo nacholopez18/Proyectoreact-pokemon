@@ -144,11 +144,10 @@
   margin-bottom: -10vh;
 }
 .poke-info .bg-ball {
-  opacity: 0.3;
   position: absolute;
-  height: 30%;
-  right: 2vh;
-  top: 2vh;
+  height: 18rem;
+  right: 0;
+  bottom: 15vh;
 }
 .poke-portrait a {
   color: white;
@@ -164,12 +163,26 @@
 .poke-portrait a.btn-next {
   right: 0;
 }
-.poke-info .poke-img {
+.poke-img {
   margin: 0 auto;
   aspect-ratio: 1;
-  height: 90%;
+  height: 0;
   display: block;
   position: relative;
+}
+@keyframes entrance {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 90%;
+    opacity: 1;
+  }
+}
+.animationClass {
+  animation: entrance 0.5s;
+  height: 90%;
 }
 .poke-info .card {
   background-color: white;
@@ -179,6 +192,13 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+}
+.poke-info .card,
+.poke-portrait,
+.poke-info nav {
+  max-width: 1200px;
+  align-self: center;
+  width: 100%;
 }
 .poke-info .poke-stats {
   display: flex;
@@ -208,6 +228,7 @@
   position: absolute;
   top: 0.25rem;
   border-radius: 1rem;
+  transition: 0.3s;
 }
 .poke-info .spacer {
   border-right: 2px solid #0003;
@@ -262,4 +283,8 @@
 }
 .poke-info .card h3 {
   text-align: center;
+}
+.poke-info .card p {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
