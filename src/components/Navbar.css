@@ -1,4 +1,4 @@
-nav {
+nav.browseNav {
   color: white;
   /* position: relative; */
   padding: 12px 12px 24px 12px;
@@ -42,33 +42,51 @@ nav {
   border-radius: 50%;
   height: 32px;
   padding: 8px;
-
   background-color: white;
+}
+.searchBar button img {
+  width: 16px;
+  height: 16px;
 }
 .searchBar button,
 input {
   border: none;
   box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.25) inset;
 }
-.modalNavbar {
-  background-color: white;
-  color: black;
-  padding: 15px;
-  border-radius: 20px;
-  margin: 7px;
+.modalWindow {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
 }
-form {
-  margin-top: 7px;
+.modalWindow form {
+  background-color: #dc0a2d;
+  border-radius: 20px;
+  padding: 0 4px 4px 4px;
+  margin: 110px auto 0 auto;
+  width: 113px;
+}
+.modalWindow h4 {
+  padding: 16px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+}
+.modalWindow .wrapper {
+  background-color: white;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 16px;
-  top: 5px;
-}
-/* form h4 {
+  gap: 16px;
+  color: black;
   padding: 16px 20px;
-} */
+  font-size: 10px;
+  line-height: 16px;
+  border-radius: 20px;
+}
+
+.modalWindow .wrapper div {
+  display: flex;
+}
 form div input {
-  margin-right: 7px;
+  margin-right: 8px;
   accent-color: #dc0a2d;
 }

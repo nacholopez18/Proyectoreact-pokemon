@@ -14,19 +14,21 @@ function Pokemon(props) {
   };
 
   return (
-    <Link to={props.number > 0 ? `/pokemon/` + props.number : "#"}>
-      <div className="pokemonBox">
-        {props.img ? (
-          <>
-            <p className="pokemonBoxHashtag">#{number}</p>
-            <img src={props.img} />
-          </>
-        ) : (
-          <div className="emptyImage"> </div>
-        )}
-        <p className="pokemonBoxName">{props.name}</p>
-      </div>
-    </Link>
+    <div className="browseGridBox">
+      <Link to={props.number > 0 ? `/pokemon/` + props.number : "#"}>
+        <div className="pokemonBox">
+          {props.img ? (
+            <>
+              <p className="pokemonBoxHashtag">#{number}</p>
+              <img src={props.img} />
+            </>
+          ) : (
+            <div className="emptyImage"> </div>
+          )}
+          <p className="pokemonBoxName">{props.name}</p>
+        </div>
+      </Link>
+    </div>
   );
 }
 

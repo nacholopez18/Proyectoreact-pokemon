@@ -7,7 +7,7 @@ function Navbar(props) {
   // const [memoryCheck, setMemoryCheck] = useState(true);
   const imgUrl = props.searchState ? "./tag.svg" : "./text_format.png";
   return (
-    <nav>
+    <nav className="browseNav">
       <div className="titleWithImg">
         <img src="./pokeball.png" />
         <h1>Pokédex</h1>

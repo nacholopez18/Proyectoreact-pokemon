@@ -7,7 +7,7 @@ function Browse() {
   const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:3000/pokemon")
+    fetch("https://fake-rest-api-mu.vercel.app/pokemon")
       .then((res) => res.json())
       .then((data) => {
         setPokeData(data);
@@ -57,18 +57,14 @@ function Browse() {
       />
       <main>
         <div className="browseGrid">
-          {results.map((poke) => {
+          {results.map((poke, i) => {
             return (
-              <>
-                <div className="browseGridBox">
-                  <Pokemon
-                    key={poke.number}
-                    name={poke.name}
-                    img={poke.img}
-                    number={poke.number}
-                  />
-                </div>
-              </>
+              <Pokemon
+                key={i}
+                name={poke.name}
+                img={poke.img}
+                number={poke.number}
+              />
             );
           })}
         </div>

@@ -18,7 +18,7 @@ function DetallePokemon() {
   };
   const pokeId = useParams();
   useEffect(() => {
-    fetch("http://localhost:3000/pokemon?number=" + pokeId.id)
+    fetch("https://fake-rest-api-mu.vercel.app/pokemon?number=" + pokeId.id)
       .then((res) => res.json())
       .then((data) => {
         setMyPokemon(data[0]);
@@ -67,6 +67,12 @@ function DetallePokemon() {
           }}
           className={"poke-info " + myPokemon.type[0] + "-bg"}
         >
+          <div className="bg-ball">
+            <div>
+              <img src="../pokeball-1.svg" />
+            </div>
+          </div>
+
           <nav>
             <div className="info-nav">
               <Link to={`..`}>
@@ -78,7 +84,6 @@ function DetallePokemon() {
             <p>{"#" + number}</p>
           </nav>
           <div className="poke-portrait">
-            <img className="bg-ball" src="../pokeball-1.svg" />
             <img
               className="poke-img "
               src={myPokemon.img}
@@ -157,20 +162,20 @@ function DetallePokemon() {
               <h3 className={myPokemon.type[0] + "-txt"}>Base Stats</h3>
               <div className="poke-stats">
                 <ul className={myPokemon.type[0] + "-txt spacer"}>
-                  <li>HP</li>
-                  <li>ATK</li>
-                  <li>DEF</li>
-                  <li>SATK</li>
-                  <li>SDEF</li>
-                  <li>SPD</li>
+                  <li key="hp">HP</li>
+                  <li key="atk">ATK</li>
+                  <li key="def">DEF</li>
+                  <li key="satk">SATK</li>
+                  <li key="sdef">SDEF</li>
+                  <li key="spd">SPD</li>
                 </ul>
                 <ul>
-                  <li>{myPokemon.hp}</li>
-                  <li>{myPokemon.attack}</li>
-                  <li>{myPokemon.defense}</li>
-                  <li>{myPokemon[`special-attack`]}</li>
-                  <li>{myPokemon[`special-defense`]}</li>
-                  <li>{myPokemon.speed}</li>
+                  <li key="php">{myPokemon.hp}</li>
+                  <li key="patk">{myPokemon.attack}</li>
+                  <li key="pdef">{myPokemon.defense}</li>
+                  <li key="psatk">{myPokemon[`special-attack`]}</li>
+                  <li key="psdef">{myPokemon[`special-defense`]}</li>
+                  <li key="pspd">{myPokemon.speed}</li>
                 </ul>
                 <ul className="status-bars">
                   <li>

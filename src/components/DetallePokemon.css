@@ -118,17 +118,24 @@
 .water-txt {
   color: #6493eb;
 }
-
+.poke-info h3 {
+  font-size: 24px;
+  line-height: 32px;
+}
 .poke-info nav {
-  margin: 1rem;
+  padding: 20px 20px 24px 20px;
+  color: white;
   display: flex;
-  font-size: 1.7rem;
+  font-weight: 700;
   justify-content: space-between;
 }
+.poke-info {
+  font-size: 10px;
+}
 .poke-info nav p {
-  font-size: 1.2rem;
-  padding-top: 0.5rem;
-  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  padding-top: 6px;
 }
 .poke-info .info-nav {
   display: flex;
@@ -145,16 +152,27 @@
 }
 .poke-info .bg-ball {
   position: absolute;
-  height: 18rem;
-  right: 0;
-  bottom: 15vh;
+  pointer-events: none;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 8px;
+}
+.poke-info .bg-ball div {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: right;
+}
+.poke-info .bg-ball img {
+  height: 260px;
 }
 .poke-portrait a {
   color: white;
   position: absolute;
   top: 16vh;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 24px;
+  padding: 10px;
   font-weight: bold;
 }
 .poke-portrait a.btn-prev {
@@ -252,7 +270,7 @@
 }
 .poke-info .card .extra-info li span {
   opacity: 0.5;
-  font-size: 0.8rem;
+  font-size: 8px;
 }
 .poke-info .card .extra-info .spacer {
   padding-right: 0.5rem;
