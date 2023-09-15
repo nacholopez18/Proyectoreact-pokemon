@@ -89,4 +89,5 @@ input {
 form div input {
   margin-right: 8px;
   accent-color: #dc0a2d;
+  box-shadow: none;
 }
